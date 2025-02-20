@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- <link rel="icon" href=""> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sudoku</title>
+    <link rel="stylesheet" type="text/css" href="css/sudoku.css" />
+
+    <!--	Google Fonts-->
+    <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700,900" rel="stylesheet">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+  </head>
+  <body>
+    <h1>Sudoku</h1>
+
+    <div id="puzzle-container">
+      <div id="block-1" class="puzzle-block">
+        <div class="puzzle-cell">1</div>
+        <div class="puzzle-cell">2</div>
+        <div class="puzzle-cell puzzle-right-edge">3</div>
+        <div class="puzzle-cell">4</div>
+        <div class="puzzle-cell">5</div>
+        <div class="puzzle-cell puzzle-right-edge">6</div>
+        <div class="puzzle-cell puzzle-bottom-edge">7</div>
+        <div class="puzzle-cell puzzle-bottom-edge">8</div>
+        <div class="puzzle-cell puzzle-right-edge puzzle-bottom-edge">9</div>
+      </div>
+
+      <div id="block-2" class="puzzle-block">
+        <div class="puzzle-cell puzzle-left-edge">1</div>
+        <div class="puzzle-cell">2</div>
+        <div class="puzzle-cell puzzle-right-edge">3</div>
+        <div class="puzzle-cell puzzle-left-edge">4</div>
+        <div class="puzzle-cell">5</div>
+        <div class="puzzle-cell puzzle-right-edge">6</div>
+        <div class="puzzle-cell puzzle-left-edge puzzle-bottom-edge">7</div>
+        <div class="puzzle-cell puzzle-bottom-edge">8</div>
+        <div class="puzzle-cell puzzle-right-edge puzzle-bottom-edge">9</div>
+      </div>
+
+      <div id="block-3" class="puzzle-block">
+        <div class="puzzle-cell puzzle-left-edge">1</div>
+        <div class="puzzle-cell">2</div>
+        <div class="puzzle-cell">3</div>
+        <div class="puzzle-cell puzzle-left-edge">4</div>
+        <div class="puzzle-cell">5</div>
+        <div class="puzzle-cell">6</div>
+        <div class="puzzle-cell puzzle-left-edge puzzle-bottom-edge">7</div>
+        <div class="puzzle-cell puzzle-bottom-edge">8</div>
+        <div class="puzzle-cell puzzle-bottom-edge">9</div>
+      </div>
+
+      <div id="block-4" class="puzzle-block">
+        <div class="puzzle-cell puzzle-top-edge">1</div>
+        <div class="puzzle-cell puzzle-top-edge">2</div>
+        <div class="puzzle-cell puzzle-right-edge puzzle-top-edge">3</div>
+        <div class="puzzle-cell">4</div>
+        <div class="puzzle-cell">5</div>
+        <div class="puzzle-cell puzzle-right-edge">6</div>
+        <div class="puzzle-cell puzzle-bottom-edge">7</div>
+        <div class="puzzle-cell puzzle-bottom-edge">8</div>
+        <div class="puzzle-cell puzzle-right-edge puzzle-bottom-edge">9</div>
+      </div>
+
+      <div id="block-5" class="puzzle-block">
+        <div class="puzzle-cell puzzle-left-edge puzzle-top-edge">1</div>
+        <div class="puzzle-cell puzzle-top-edge">2</div>
+        <div class="puzzle-cell puzzle-right-edge puzzle-top-edge">3</div>
+        <div class="puzzle-cell puzzle-left-edge">4</div>
+        <div class="puzzle-cell">5</div>
+        <div class="puzzle-cell puzzle-right-edge">6</div>
+        <div class="puzzle-cell puzzle-left-edge puzzle-bottom-edge">7</div>
+        <div class="puzzle-cell puzzle-bottom-edge">8</div>
+        <div class="puzzle-cell puzzle-right-edge puzzle-bottom-edge">9</div>
+      </div>
+
+      <div id="block-6" class="puzzle-block">
+        <div class="puzzle-cell puzzle-left-edge puzzle-top-edge">1</div>
+        <div class="puzzle-cell puzzle-top-edge">2</div>
+        <div class="puzzle-cell puzzle-top-edge">3</div>
+        <div class="puzzle-cell puzzle-left-edge">4</div>
+        <div class="puzzle-cell">5</div>
+        <div class="puzzle-cell">6</div>
+        <div class="puzzle-cell puzzle-left-edge puzzle-bottom-edge">7</div>
+        <div class="puzzle-cell puzzle-bottom-edge">8</div>
+        <div class="puzzle-cell puzzle-bottom-edge">9</div>
+      </div>
+
+      <div id="block-7" class="puzzle-block">
+        <div class="puzzle-cell puzzle-top-edge">1</div>
+        <div class="puzzle-cell puzzle-top-edge">2</div>
+        <div class="puzzle-cell puzzle-right-edge puzzle-top-edge">3</div>
+        <div class="puzzle-cell">4</div>
+        <div class="puzzle-cell">5</div>
+        <div class="puzzle-cell puzzle-right-edge">6</div>
+        <div class="puzzle-cell">7</div>
+        <div class="puzzle-cell">8</div>
+        <div class="puzzle-cell puzzle-right-edge">9</div>
+      </div>
+
+      <div id="block-8" class="puzzle-block">
+        <div class="puzzle-cell puzzle-left-edge puzzle-top-edge">1</div>
+        <div class="puzzle-cell puzzle-top-edge">2</div>
+        <div class="puzzle-cell puzzle-right-edge puzzle-top-edge">3</div>
+        <div class="puzzle-cell puzzle-left-edge">4</div>
+        <div class="puzzle-cell">5</div>
+        <div class="puzzle-cell puzzle-right-edge">6</div>
+        <div class="puzzle-cell puzzle-left-edge">7</div>
+        <div class="puzzle-cell">8</div>
+        <div class="puzzle-cell puzzle-right-edge">9</div>
+      </div>
+
+      <div id="block-9" class="puzzle-block">
+        <div class="puzzle-cell puzzle-left-edge puzzle-top-edge">1</div>
+        <div class="puzzle-cell puzzle-top-edge">2</div>
+        <div class="puzzle-cell puzzle-top-edge">3</div>
+        <div class="puzzle-cell puzzle-left-edge">4</div>
+        <div class="puzzle-cell">5</div>
+        <div class="puzzle-cell">6</div>
+        <div class="puzzle-cell puzzle-left-edge">7</div>
+        <div class="puzzle-cell">8</div>
+        <div class="puzzle-cell">9</div>
+      </div>
+    </div>
+
+    <div id="puzzle-options"></div>
+  </body>
+</html>

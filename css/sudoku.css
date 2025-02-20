@@ -1,0 +1,45 @@
+body {
+  background-color: #102175;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+h1 {
+  font-size: 64px;
+  background-color: black;
+  text-align: center;
+}
+
+#puzzle-container {
+  margin: 32px;
+  border: solid 2px white;
+  /* height: 120px; */
+  display: grid;
+  grid-template-columns: auto auto auto;
+  text-align: center;
+}
+
+.puzzle-block {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.puzzle-cell {
+  padding: 16px;
+  border: solid 1px gray;
+}
+
+.puzzle-right-edge {
+  border-right: solid 2px black;
+}
+.puzzle-left-edge {
+  border-left: solid 2px black;
+}
+.puzzle-top-edge {
+  border-top: solid 2px black;
+}
+.puzzle-bottom-edge {
+  border-bottom: solid 2px black;
+}
