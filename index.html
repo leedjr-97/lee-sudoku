@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sudoku</title>
     <link rel="stylesheet" type="text/css" href="css/sudoku.css" />
+    <link rel="stylesheet" type="text/css" href="css/sudokuGrid.css" />
 
     <!--	Google Fonts-->
     <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
@@ -17,116 +18,182 @@
   <body>
     <h1>Sudoku</h1>
 
-    <div id="puzzle-container">
-      <div id="block-1" class="puzzle-block">
-        <div class="puzzle-cell">1</div>
-        <div class="puzzle-cell">2</div>
-        <div class="puzzle-cell puzzle-right-edge">3</div>
-        <div class="puzzle-cell">4</div>
-        <div class="puzzle-cell">5</div>
-        <div class="puzzle-cell puzzle-right-edge">6</div>
-        <div class="puzzle-cell puzzle-bottom-edge">7</div>
-        <div class="puzzle-cell puzzle-bottom-edge">8</div>
-        <div class="puzzle-cell puzzle-right-edge puzzle-bottom-edge">9</div>
+    <div id="big-container">
+      <div id="row-one">
+        <div class="block-one">
+          <div class="number-row-one">
+            <div class="item-one">
+              <input class="input-style" type="text" maxlength="1" />
+            </div>
+            <div class="item-two">2</div>
+            <div class="item-three puzzle-right-edge">3</div>
+          </div>
+          <div class="number-row-two">
+            <div class="item-four">4</div>
+            <div class="item-five">5</div>
+            <div class="item-six puzzle-right-edge">6</div>
+          </div>
+          <div class="number-row-three">
+            <div class="item-seven puzzle-bottom-edge">7</div>
+            <div class="item-eight puzzle-bottom-edge">8</div>
+            <div class="item-nine puzzle-right-edge puzzle-bottom-edge">9</div>
+          </div>
+        </div>
+        <div class="block-two">
+          <div class="number-row-one">
+            <div class="item-one puzzle-left-edge">1</div>
+            <div class="item-two">2</div>
+            <div class="item-three puzzle-right-edge">3</div>
+          </div>
+          <div class="number-row-two">
+            <div class="item-four puzzle-left-edge">4</div>
+            <div class="item-five">5</div>
+            <div class="item-six puzzle-right-edge">6</div>
+          </div>
+          <div class="number-row-three">
+            <div class="item-seven puzzle-left-edge puzzle-bottom-edge">7</div>
+            <div class="item-eight puzzle-bottom-edge">8</div>
+            <div class="item-nine puzzle-right-edge puzzle-bottom-edge">9</div>
+          </div>
+        </div>
+        <div class="block-three">
+          <div class="number-row-one">
+            <div class="item-one puzzle-left-edge">1</div>
+            <div class="item-two">2</div>
+            <div class="item-three">3</div>
+          </div>
+          <div class="number-row-two">
+            <div class="item-four puzzle-left-edge">4</div>
+            <div class="item-five">5</div>
+            <div class="item-six">6</div>
+          </div>
+          <div class="number-row-three">
+            <div class="item-seven puzzle-left-edge puzzle-bottom-edge">7</div>
+            <div class="item-eight puzzle-bottom-edge">8</div>
+            <div class="item-nine puzzle-bottom-edge">9</div>
+          </div>
+        </div>
       </div>
 
-      <div id="block-2" class="puzzle-block">
-        <div class="puzzle-cell puzzle-left-edge">1</div>
-        <div class="puzzle-cell">2</div>
-        <div class="puzzle-cell puzzle-right-edge">3</div>
-        <div class="puzzle-cell puzzle-left-edge">4</div>
-        <div class="puzzle-cell">5</div>
-        <div class="puzzle-cell puzzle-right-edge">6</div>
-        <div class="puzzle-cell puzzle-left-edge puzzle-bottom-edge">7</div>
-        <div class="puzzle-cell puzzle-bottom-edge">8</div>
-        <div class="puzzle-cell puzzle-right-edge puzzle-bottom-edge">9</div>
+      <div id="row-two">
+        <div class="block-one">
+          <div class="number-row-one">
+            <div class="item-one puzzle-top-edge">
+              <input class="input-style" type="text" maxlength="1" />
+            </div>
+            <div class="item-two puzzle-top-edge">2</div>
+            <div class="item-three puzzle-right-edge puzzle-top-edge">3</div>
+          </div>
+          <div class="number-row-two">
+            <div class="item-four">4</div>
+            <div class="item-five">5</div>
+            <div class="item-six puzzle-right-edge">6</div>
+          </div>
+          <div class="number-row-three">
+            <div class="item-seven puzzle-bottom-edge">7</div>
+            <div class="item-eight puzzle-bottom-edge">8</div>
+            <div class="item-nine puzzle-right-edge puzzle-bottom-edge">9</div>
+          </div>
+        </div>
+        <div class="block-two">
+          <div class="number-row-one">
+            <div class="item-one puzzle-left-edge puzzle-top-edge">1</div>
+            <div class="item-two puzzle-top-edge">2</div>
+            <div class="item-three puzzle-right-edge puzzle-top-edge">3</div>
+          </div>
+          <div class="number-row-two">
+            <div class="item-four puzzle-left-edge">4</div>
+            <div class="item-five">5</div>
+            <div class="item-six puzzle-right-edge">6</div>
+          </div>
+          <div class="number-row-three">
+            <div class="item-seven puzzle-left-edge puzzle-bottom-edge">7</div>
+            <div class="item-eight puzzle-bottom-edge">8</div>
+            <div class="item-nine puzzle-right-edge puzzle-bottom-edge">9</div>
+          </div>
+        </div>
+        <div class="block-three">
+          <div class="number-row-one">
+            <div class="item-one puzzle-left-edge puzzle-top-edge">1</div>
+            <div class="item-two puzzle-top-edge">2</div>
+            <div class="item-three puzzle-top-edge">3</div>
+          </div>
+          <div class="number-row-two">
+            <div class="item-four puzzle-left-edge">4</div>
+            <div class="item-five">5</div>
+            <div class="item-six">6</div>
+          </div>
+          <div class="number-row-three">
+            <div class="item-seven puzzle-left-edge puzzle-bottom-edge">7</div>
+            <div class="item-eight puzzle-bottom-edge">8</div>
+            <div class="item-nine puzzle-bottom-edge">9</div>
+          </div>
+        </div>
       </div>
 
-      <div id="block-3" class="puzzle-block">
-        <div class="puzzle-cell puzzle-left-edge">1</div>
-        <div class="puzzle-cell">2</div>
-        <div class="puzzle-cell">3</div>
-        <div class="puzzle-cell puzzle-left-edge">4</div>
-        <div class="puzzle-cell">5</div>
-        <div class="puzzle-cell">6</div>
-        <div class="puzzle-cell puzzle-left-edge puzzle-bottom-edge">7</div>
-        <div class="puzzle-cell puzzle-bottom-edge">8</div>
-        <div class="puzzle-cell puzzle-bottom-edge">9</div>
-      </div>
-
-      <div id="block-4" class="puzzle-block">
-        <div class="puzzle-cell puzzle-top-edge">1</div>
-        <div class="puzzle-cell puzzle-top-edge">2</div>
-        <div class="puzzle-cell puzzle-right-edge puzzle-top-edge">3</div>
-        <div class="puzzle-cell">4</div>
-        <div class="puzzle-cell">5</div>
-        <div class="puzzle-cell puzzle-right-edge">6</div>
-        <div class="puzzle-cell puzzle-bottom-edge">7</div>
-        <div class="puzzle-cell puzzle-bottom-edge">8</div>
-        <div class="puzzle-cell puzzle-right-edge puzzle-bottom-edge">9</div>
-      </div>
-
-      <div id="block-5" class="puzzle-block">
-        <div class="puzzle-cell puzzle-left-edge puzzle-top-edge">1</div>
-        <div class="puzzle-cell puzzle-top-edge">2</div>
-        <div class="puzzle-cell puzzle-right-edge puzzle-top-edge">3</div>
-        <div class="puzzle-cell puzzle-left-edge">4</div>
-        <div class="puzzle-cell">5</div>
-        <div class="puzzle-cell puzzle-right-edge">6</div>
-        <div class="puzzle-cell puzzle-left-edge puzzle-bottom-edge">7</div>
-        <div class="puzzle-cell puzzle-bottom-edge">8</div>
-        <div class="puzzle-cell puzzle-right-edge puzzle-bottom-edge">9</div>
-      </div>
-
-      <div id="block-6" class="puzzle-block">
-        <div class="puzzle-cell puzzle-left-edge puzzle-top-edge">1</div>
-        <div class="puzzle-cell puzzle-top-edge">2</div>
-        <div class="puzzle-cell puzzle-top-edge">3</div>
-        <div class="puzzle-cell puzzle-left-edge">4</div>
-        <div class="puzzle-cell">5</div>
-        <div class="puzzle-cell">6</div>
-        <div class="puzzle-cell puzzle-left-edge puzzle-bottom-edge">7</div>
-        <div class="puzzle-cell puzzle-bottom-edge">8</div>
-        <div class="puzzle-cell puzzle-bottom-edge">9</div>
-      </div>
-
-      <div id="block-7" class="puzzle-block">
-        <div class="puzzle-cell puzzle-top-edge">1</div>
-        <div class="puzzle-cell puzzle-top-edge">2</div>
-        <div class="puzzle-cell puzzle-right-edge puzzle-top-edge">3</div>
-        <div class="puzzle-cell">4</div>
-        <div class="puzzle-cell">5</div>
-        <div class="puzzle-cell puzzle-right-edge">6</div>
-        <div class="puzzle-cell">7</div>
-        <div class="puzzle-cell">8</div>
-        <div class="puzzle-cell puzzle-right-edge">9</div>
-      </div>
-
-      <div id="block-8" class="puzzle-block">
-        <div class="puzzle-cell puzzle-left-edge puzzle-top-edge">1</div>
-        <div class="puzzle-cell puzzle-top-edge">2</div>
-        <div class="puzzle-cell puzzle-right-edge puzzle-top-edge">3</div>
-        <div class="puzzle-cell puzzle-left-edge">4</div>
-        <div class="puzzle-cell">5</div>
-        <div class="puzzle-cell puzzle-right-edge">6</div>
-        <div class="puzzle-cell puzzle-left-edge">7</div>
-        <div class="puzzle-cell">8</div>
-        <div class="puzzle-cell puzzle-right-edge">9</div>
-      </div>
-
-      <div id="block-9" class="puzzle-block">
-        <div class="puzzle-cell puzzle-left-edge puzzle-top-edge">1</div>
-        <div class="puzzle-cell puzzle-top-edge">2</div>
-        <div class="puzzle-cell puzzle-top-edge">3</div>
-        <div class="puzzle-cell puzzle-left-edge">4</div>
-        <div class="puzzle-cell">5</div>
-        <div class="puzzle-cell">6</div>
-        <div class="puzzle-cell puzzle-left-edge">7</div>
-        <div class="puzzle-cell">8</div>
-        <div class="puzzle-cell">9</div>
+      <div id="row-three">
+        <div class="block-one">
+          <div class="number-row-one">
+            <div class="item-one puzzle-top-edge">
+              <input class="input-style" type="text" maxlength="1" />
+            </div>
+            <div class="item-two puzzle-top-edge">2</div>
+            <div class="item-three puzzle-right-edge puzzle-top-edge">3</div>
+          </div>
+          <div class="number-row-two">
+            <div class="item-four">4</div>
+            <div class="item-five">5</div>
+            <div class="item-six puzzle-right-edge">6</div>
+          </div>
+          <div class="number-row-three">
+            <div class="item-seven">7</div>
+            <div class="item-eight">8</div>
+            <div class="item-nine puzzle-right-edge">9</div>
+          </div>
+        </div>
+        <div class="block-two">
+          <div class="number-row-one">
+            <div class="item-one puzzle-left-edge puzzle-top-edge">1</div>
+            <div class="item-two puzzle-top-edge">2</div>
+            <div class="item-three puzzle-right-edge puzzle-top-edge">3</div>
+          </div>
+          <div class="number-row-two">
+            <div class="item-four puzzle-left-edge">4</div>
+            <div class="item-five">5</div>
+            <div class="item-six puzzle-right-edge">6</div>
+          </div>
+          <div class="number-row-three">
+            <div class="item-seven puzzle-left-edge">7</div>
+            <div class="item-eight">8</div>
+            <div class="item-nine puzzle-right-edge">9</div>
+          </div>
+        </div>
+        <div class="block-three">
+          <div class="number-row-one">
+            <div class="item-one puzzle-left-edge puzzle-top-edge">1</div>
+            <div class="item-two puzzle-top-edge">2</div>
+            <div class="item-three puzzle-top-edge">3</div>
+          </div>
+          <div class="number-row-two">
+            <div class="item-four puzzle-left-edge">4</div>
+            <div class="item-five">5</div>
+            <div class="item-six">6</div>
+          </div>
+          <div class="number-row-three">
+            <div class="item-seven puzzle-left-edge">7</div>
+            <div class="item-eight">8</div>
+            <div class="item-nine">9</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div id="puzzle-options"></div>
+    <div id="puzzle-options">
+      <button>New Puzzle</button>
+
+      <button>Hint</button>
+
+      <button>Check</button>
+    </div>
   </body>
 </html>
