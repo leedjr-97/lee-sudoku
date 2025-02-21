@@ -8,6 +8,32 @@
     <link rel="stylesheet" type="text/css" href="css/sudoku.css" />
     <link rel="stylesheet" type="text/css" href="css/sudokuGrid.css" />
 
+    <script src="javascript/SudokuBoard.js"></script>
+    <script src="javascript/SudokuUtils.js"></script>
+
+    <script>
+      function setUpBoard() {
+        const board = new SudokuBoard();
+
+        for (let i = 0; i < board.board.length; i++) {
+          for (let j = 0; j < board.board[i].length; j++) {
+            if (board.board[i][j] === -1) {
+              document.getElementById(`${i}-${j}-input`).value = "";
+              document
+                .getElementById(`${i}-${j}-input`)
+                .addEventListener("input", (event) => {
+                  board.setNumber(i, j, event.target.value);
+                });
+            } else {
+              document.getElementById(`${i}-${j}-input`).value =
+                board.board[i][j].toString();
+              document.getElementById(`${i}-${j}-input`).disabled = true;
+            }
+          }
+        }
+      }
+    </script>
+
     <!--	Google Fonts-->
     <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 	
@@ -22,55 +48,254 @@
       <div id="row-one">
         <div class="block-one">
           <div class="number-row-one">
-            <div class="item-one">
-              <input class="input-style" type="text" maxlength="1" />
+            <div id="0-0" class="item-one">
+              <input
+                id="0-0-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
             </div>
-            <div class="item-two">2</div>
-            <div class="item-three puzzle-right-edge">3</div>
+            <div id="0-1" class="item-two">
+              <input
+                id="0-1-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="0-2" class="item-three puzzle-right-edge">
+              <input
+                id="0-2-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-two">
-            <div class="item-four">4</div>
-            <div class="item-five">5</div>
-            <div class="item-six puzzle-right-edge">6</div>
+            <div id="1-0" class="item-four">
+              <input
+                id="1-0-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="1-1" class="item-five">
+              <input
+                id="1-1-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="1-2" class="item-six puzzle-right-edge">
+              <input
+                id="1-2-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-three">
-            <div class="item-seven puzzle-bottom-edge">7</div>
-            <div class="item-eight puzzle-bottom-edge">8</div>
-            <div class="item-nine puzzle-right-edge puzzle-bottom-edge">9</div>
+            <div id="2-0" class="item-seven puzzle-bottom-edge">
+              <input
+                id="2-0-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="2-1" class="item-eight puzzle-bottom-edge">
+              <input
+                id="2-1-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div
+              id="2-2"
+              class="item-nine puzzle-right-edge puzzle-bottom-edge"
+            >
+              <input
+                id="2-2-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
         </div>
         <div class="block-two">
           <div class="number-row-one">
-            <div class="item-one puzzle-left-edge">1</div>
-            <div class="item-two">2</div>
-            <div class="item-three puzzle-right-edge">3</div>
+            <div id="0-3" class="item-one puzzle-left-edge">
+              <input
+                id="0-3-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="0-4" class="item-two">
+              <input
+                id="0-4-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="0-5" class="item-three puzzle-right-edge">
+              <input
+                id="0-5-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-two">
-            <div class="item-four puzzle-left-edge">4</div>
-            <div class="item-five">5</div>
-            <div class="item-six puzzle-right-edge">6</div>
+            <div id="1-3" class="item-four puzzle-left-edge">
+              <input
+                id="1-3-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="1-4" class="item-five">
+              <input
+                id="1-4-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="1-5" class="item-six puzzle-right-edge">
+              <input
+                id="1-5-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-three">
-            <div class="item-seven puzzle-left-edge puzzle-bottom-edge">7</div>
-            <div class="item-eight puzzle-bottom-edge">8</div>
-            <div class="item-nine puzzle-right-edge puzzle-bottom-edge">9</div>
+            <div
+              id="2-3"
+              class="item-seven puzzle-left-edge puzzle-bottom-edge"
+            >
+              <input
+                id="2-3-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="2-4" class="item-eight puzzle-bottom-edge">
+              <input
+                id="2-4-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div
+              id="2-5"
+              class="item-nine puzzle-right-edge puzzle-bottom-edge"
+            >
+              <input
+                id="2-5-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
         </div>
         <div class="block-three">
           <div class="number-row-one">
-            <div class="item-one puzzle-left-edge">1</div>
-            <div class="item-two">2</div>
-            <div class="item-three">3</div>
+            <div id="0-6" class="item-one puzzle-left-edge">
+              <input
+                id="0-6-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="0-7" class="item-two">
+              <input
+                id="0-7-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="0-8" class="item-three">
+              <input
+                id="0-8-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-two">
-            <div class="item-four puzzle-left-edge">4</div>
-            <div class="item-five">5</div>
-            <div class="item-six">6</div>
+            <div id="1-6" class="item-four puzzle-left-edge">
+              <input
+                id="1-6-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="1-7" class="item-five">
+              <input
+                id="1-7-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="1-8" class="item-six">
+              <input
+                id="1-8-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-three">
-            <div class="item-seven puzzle-left-edge puzzle-bottom-edge">7</div>
-            <div class="item-eight puzzle-bottom-edge">8</div>
-            <div class="item-nine puzzle-bottom-edge">9</div>
+            <div
+              id="2-6"
+              class="item-seven puzzle-left-edge puzzle-bottom-edge"
+            >
+              <input
+                id="2-6-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="2-7" class="item-eight puzzle-bottom-edge">
+              <input
+                id="2-7-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="2-8" class="item-nine puzzle-bottom-edge">
+              <input
+                id="2-8-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -78,55 +303,254 @@
       <div id="row-two">
         <div class="block-one">
           <div class="number-row-one">
-            <div class="item-one puzzle-top-edge">
-              <input class="input-style" type="text" maxlength="1" />
+            <div id="3-0" class="item-one puzzle-top-edge">
+              <input
+                id="3-0-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
             </div>
-            <div class="item-two puzzle-top-edge">2</div>
-            <div class="item-three puzzle-right-edge puzzle-top-edge">3</div>
+            <div id="3-1" class="item-two puzzle-top-edge">
+              <input
+                id="3-1-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="3-2" class="item-three puzzle-right-edge puzzle-top-edge">
+              <input
+                id="3-2-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-two">
-            <div class="item-four">4</div>
-            <div class="item-five">5</div>
-            <div class="item-six puzzle-right-edge">6</div>
+            <div id="4-0" class="item-four">
+              <input
+                id="4-0-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="4-1" class="item-five">
+              <input
+                id="4-1-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="4-2" class="item-six puzzle-right-edge">
+              <input
+                id="4-2-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-three">
-            <div class="item-seven puzzle-bottom-edge">7</div>
-            <div class="item-eight puzzle-bottom-edge">8</div>
-            <div class="item-nine puzzle-right-edge puzzle-bottom-edge">9</div>
+            <div id="5-0" class="item-seven puzzle-bottom-edge">
+              <input
+                id="5-0-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="5-1" class="item-eight puzzle-bottom-edge">
+              <input
+                id="5-1-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div
+              id="5-2"
+              class="item-nine puzzle-right-edge puzzle-bottom-edge"
+            >
+              <input
+                id="5-2-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
         </div>
         <div class="block-two">
           <div class="number-row-one">
-            <div class="item-one puzzle-left-edge puzzle-top-edge">1</div>
-            <div class="item-two puzzle-top-edge">2</div>
-            <div class="item-three puzzle-right-edge puzzle-top-edge">3</div>
+            <div id="3-3" class="item-one puzzle-left-edge puzzle-top-edge">
+              <input
+                id="3-3-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="3-4" class="item-two puzzle-top-edge">
+              <input
+                id="3-4-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="3-5" class="item-three puzzle-right-edge puzzle-top-edge">
+              <input
+                id="3-5-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-two">
-            <div class="item-four puzzle-left-edge">4</div>
-            <div class="item-five">5</div>
-            <div class="item-six puzzle-right-edge">6</div>
+            <div id="4-3" class="item-four puzzle-left-edge">
+              <input
+                id="4-3-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="4-4" class="item-five">
+              <input
+                id="4-4-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="4-5" class="item-six puzzle-right-edge">
+              <input
+                id="4-5-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-three">
-            <div class="item-seven puzzle-left-edge puzzle-bottom-edge">7</div>
-            <div class="item-eight puzzle-bottom-edge">8</div>
-            <div class="item-nine puzzle-right-edge puzzle-bottom-edge">9</div>
+            <div
+              id="5-3"
+              class="item-seven puzzle-left-edge puzzle-bottom-edge"
+            >
+              <input
+                id="5-3-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="5-4" class="item-eight puzzle-bottom-edge">
+              <input
+                id="5-4-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div
+              id="5-5"
+              class="item-nine puzzle-right-edge puzzle-bottom-edge"
+            >
+              <input
+                id="5-5-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
         </div>
         <div class="block-three">
           <div class="number-row-one">
-            <div class="item-one puzzle-left-edge puzzle-top-edge">1</div>
-            <div class="item-two puzzle-top-edge">2</div>
-            <div class="item-three puzzle-top-edge">3</div>
+            <div id="3-6" class="item-one puzzle-left-edge puzzle-top-edge">
+              <input
+                id="3-6-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="3-7" class="item-two puzzle-top-edge">
+              <input
+                id="3-7-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="3-8" class="item-three puzzle-top-edge">
+              <input
+                id="3-8-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-two">
-            <div class="item-four puzzle-left-edge">4</div>
-            <div class="item-five">5</div>
-            <div class="item-six">6</div>
+            <div id="4-6" class="item-four puzzle-left-edge">
+              <input
+                id="4-6-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="4-7" class="item-five">
+              <input
+                id="4-7-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="4-8" class="item-six">
+              <input
+                id="4-8-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-three">
-            <div class="item-seven puzzle-left-edge puzzle-bottom-edge">7</div>
-            <div class="item-eight puzzle-bottom-edge">8</div>
-            <div class="item-nine puzzle-bottom-edge">9</div>
+            <div
+              id="5-6"
+              class="item-seven puzzle-left-edge puzzle-bottom-edge"
+            >
+              <input
+                id="5-6-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="5-7" class="item-eight puzzle-bottom-edge">
+              <input
+                id="5-7-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="5-8" class="item-nine puzzle-bottom-edge">
+              <input
+                id="5-8-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -134,62 +558,249 @@
       <div id="row-three">
         <div class="block-one">
           <div class="number-row-one">
-            <div class="item-one puzzle-top-edge">
-              <input class="input-style" type="text" maxlength="1" />
+            <div id="6-0" class="item-one puzzle-top-edge">
+              <input
+                id="6-0-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
             </div>
-            <div class="item-two puzzle-top-edge">2</div>
-            <div class="item-three puzzle-right-edge puzzle-top-edge">3</div>
+            <div id="6-1" class="item-two puzzle-top-edge">
+              <input
+                id="6-1-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="6-2" class="item-three puzzle-right-edge puzzle-top-edge">
+              <input
+                id="6-2-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-two">
-            <div class="item-four">4</div>
-            <div class="item-five">5</div>
-            <div class="item-six puzzle-right-edge">6</div>
+            <div id="7-0" class="item-four">
+              <input
+                id="7-0-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="7-1" class="item-five">
+              <input
+                id="7-1-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="7-2" class="item-six puzzle-right-edge">
+              <input
+                id="7-2-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-three">
-            <div class="item-seven">7</div>
-            <div class="item-eight">8</div>
-            <div class="item-nine puzzle-right-edge">9</div>
+            <div id="8-0" class="item-seven">
+              <input
+                id="8-0-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="8-1" class="item-eight">
+              <input
+                id="8-1-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="8-2" class="item-nine puzzle-right-edge">
+              <input
+                id="8-2-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
         </div>
         <div class="block-two">
           <div class="number-row-one">
-            <div class="item-one puzzle-left-edge puzzle-top-edge">1</div>
-            <div class="item-two puzzle-top-edge">2</div>
-            <div class="item-three puzzle-right-edge puzzle-top-edge">3</div>
+            <div id="6-3" class="item-one puzzle-left-edge puzzle-top-edge">
+              <input
+                id="6-3-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="6-4" class="item-two puzzle-top-edge">
+              <input
+                id="6-4-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="6-5" class="item-three puzzle-right-edge puzzle-top-edge">
+              <input
+                id="6-5-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-two">
-            <div class="item-four puzzle-left-edge">4</div>
-            <div class="item-five">5</div>
-            <div class="item-six puzzle-right-edge">6</div>
+            <div id="7-3" class="item-four puzzle-left-edge">
+              <input
+                id="7-3-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="7-4" class="item-five">
+              <input
+                id="7-4-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="7-5" class="item-six puzzle-right-edge">
+              <input
+                id="7-5-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-three">
-            <div class="item-seven puzzle-left-edge">7</div>
-            <div class="item-eight">8</div>
-            <div class="item-nine puzzle-right-edge">9</div>
+            <div id="8-3" class="item-seven puzzle-left-edge">
+              <input
+                id="8-3-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="8-4" class="item-eight">
+              <input
+                id="8-4-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="8-5" class="item-nine puzzle-right-edge">
+              <input
+                id="8-5-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
         </div>
         <div class="block-three">
           <div class="number-row-one">
-            <div class="item-one puzzle-left-edge puzzle-top-edge">1</div>
-            <div class="item-two puzzle-top-edge">2</div>
-            <div class="item-three puzzle-top-edge">3</div>
+            <div id="6-6" class="item-one puzzle-left-edge puzzle-top-edge">
+              <input
+                id="6-6-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="6-7" class="item-two puzzle-top-edge">
+              <input
+                id="6-7-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="6-8" class="item-three puzzle-top-edge">
+              <input
+                id="6-8-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-two">
-            <div class="item-four puzzle-left-edge">4</div>
-            <div class="item-five">5</div>
-            <div class="item-six">6</div>
+            <div id="7-6" class="item-four puzzle-left-edge">
+              <input
+                id="7-6-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="7-7" class="item-five">
+              <input
+                id="7-7-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="7-8" class="item-six">
+              <input
+                id="7-8-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
           <div class="number-row-three">
-            <div class="item-seven puzzle-left-edge">7</div>
-            <div class="item-eight">8</div>
-            <div class="item-nine">9</div>
+            <div id="8-6" class="item-seven puzzle-left-edge">
+              <input
+                id="8-6-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="8-7" class="item-eight">
+              <input
+                id="8-7-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
+            <div id="8-8" class="item-nine">
+              <input
+                id="8-8-input"
+                class="input-style"
+                type="text"
+                maxlength="1"
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div id="puzzle-options">
-      <button>New Puzzle</button>
+      <button onclick="setUpBoard()">New Puzzle</button>
 
       <button>Hint</button>
 
