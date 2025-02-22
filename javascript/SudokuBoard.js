@@ -10,7 +10,10 @@ class SudokuBoard {
 
   getHint() {}
 
-  checkPuzzle() {}
+  checkPuzzle() {
+    // Don't compare to the solution, instead check for validity
+    // That way we can check for more than one solution
+  }
 
   showSolution() {
     for (let i = 0; i < 9; i++) {
