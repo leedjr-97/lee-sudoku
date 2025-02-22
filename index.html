@@ -12,6 +12,7 @@
     <script src="javascript/SudokuUtils.js"></script>
 
     <script>
+      let myBoard = undefined;
       function setUpBoard() {
         const board = new SudokuBoard();
 
@@ -31,6 +32,12 @@
             }
           }
         }
+
+        myBoard = board;
+      }
+
+      function checkBoard() {
+        myBoard?.showSolution();
       }
     </script>
 
@@ -804,7 +811,7 @@
 
       <button>Hint</button>
 
-      <button>Check</button>
+      <button onclick="checkBoard()">Check</button>
     </div>
   </body>
 </html>
