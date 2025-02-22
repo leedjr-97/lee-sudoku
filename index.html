@@ -16,9 +16,9 @@
       function setUpBoard() {
         const board = new SudokuBoard();
 
-        for (let i = 0; i < board.board.length; i++) {
-          for (let j = 0; j < board.board[i].length; j++) {
-            if (board.board[i][j] === -1) {
+        for (let i = 0; i < board.startingBoard.length; i++) {
+          for (let j = 0; j < board.startingBoard[i].length; j++) {
+            if (board.startingBoard[i][j] === -1) {
               document.getElementById(`${i}-${j}-input`).value = "";
               document
                 .getElementById(`${i}-${j}-input`)
@@ -27,8 +27,9 @@
                 });
             } else {
               document.getElementById(`${i}-${j}-input`).value =
-                board.board[i][j].toString();
+                board.startingBoard[i][j];
               document.getElementById(`${i}-${j}-input`).disabled = true;
+              document.getElementById(`${i}-${j}-input`).style.color = "gold";
             }
           }
         }
@@ -37,6 +38,10 @@
       }
 
       function checkBoard() {
+        // myBoard?.showSolution();
+      }
+
+      function showSolution() {
         myBoard?.showSolution();
       }
     </script>
@@ -48,7 +53,7 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
   </head>
-  <body>
+  <body onload="setUpBoard()">
     <h1>Sudoku</h1>
 
     <div id="big-container">
@@ -807,11 +812,19 @@
     </div>
 
     <div id="puzzle-options">
-      <button onclick="setUpBoard()">New Puzzle</button>
+      <button
+        id="new-puzzle-button"
+        class="button-style"
+        onclick="setUpBoard()"
+      >
+        New Puzzle
+      </button>
 
-      <button>Hint</button>
+      <button class="button-style">Hint</button>
 
-      <button onclick="checkBoard()">Check</button>
+      <button class="button-style" onclick="checkBoard()">Check Puzzle</button>
+
+      <button class="button-style" onclick="showSolution()">Show Answer</button>
     </div>
   </body>
 </html>

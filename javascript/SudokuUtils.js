@@ -132,8 +132,6 @@ function verifyCoord(board, row, column) {
     return false;
   }
 
-  console.log("grid: ", grid);
-
   let numCount = 0;
   grid.forEach((gridRow, rowIndex) => {
     gridRow.forEach((gridCol, colIndex) => {
@@ -180,4 +178,48 @@ function solveBoard(baseBoard) {
   return solvedBoard;
 }
 
-function setPuzzleBoard(solvedBoard, difficulty) {}
+function generatePossiblePositions() {
+  const cellPositions = [];
+
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      cellPositions.push([i, j]);
+    }
+  }
+
+  let index = cellPositions.length; // 81
+  while (index != 0) {
+    const randomIndex = Math.floor(Math.random() * index);
+    index--;
+
+    const numberOne = cellPositions[index].slice();
+    const numberTwo = cellPositions[randomIndex].slice();
+    cellPositions[randomIndex] = numberOne;
+    cellPositions[index] = numberTwo;
+  }
+
+  return cellPositions;
+}
+function getDifficulty(difficulty) {
+  switch (difficulty) {
+    case "easy":
+      return;
+  }
+}
+function setPuzzleBoard(solvedBoard, difficulty) {
+  const possiblePositions = generatePossiblePositions();
+
+  const permeableBoard = [];
+  solvedBoard.forEach((row, index) => {
+    permeableBoard[index] = row.slice();
+  });
+
+  for (let i = 0; i < 17; i++) {
+    const row = possiblePositions[i][0];
+    const col = possiblePositions[i][1];
+
+    permeableBoard[row][col] = -1;
+  }
+
+  return permeableBoard;
+}
