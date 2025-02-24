@@ -10,6 +10,7 @@
 
     <script src="javascript/SudokuBoard.js"></script>
     <script src="javascript/SudokuUtils.js"></script>
+    <script src="javascript/ComponentFunctions.js"></script>
 
     <script>
       let myBoard = undefined;
@@ -46,12 +47,12 @@
       }
 
       function openNewPuzzleModal() {
-        const modal = document.getElementById("new-puzzle-modal");
-        modal.style.display = "block";
+        openModal();
+        setModalContent("newPuzzle");
       }
       function closeNewPuzzleModal() {
-        const modal = document.getElementById("new-puzzle-modal");
-        modal.style.display = "none";
+        closeModal();
+        setModalContent("empty");
       }
     </script>
 
@@ -77,35 +78,6 @@
         >
           New Puzzle
         </button>
-        <div id="new-puzzle-modal" class="modal">
-          <div class="modal-header">
-            <h2>New Puzzle</h2>
-
-            <button class="button-style">
-              <span class="close" onclick="closeNewPuzzleModal()">&times;</span>
-            </button>
-          </div>
-
-          <div class="modal-content">
-            <p>Choose a difficulty:</p>
-            <select>
-              <option>Very Easy</option>
-              <option>Easy</option>
-              <option>Medium</option>
-              <option>Hard</option>
-              <option>Very Hard</option>
-            </select>
-
-            <!-- Checkbox for timer? -->
-          </div>
-
-          <div class="modal-footer">
-            <button class="button-style" style="margin-right: 8px">
-              Go Back
-            </button>
-            <button class="button-style">Start</button>
-          </div>
-        </div>
       </div>
     </header>
 
@@ -869,7 +841,9 @@
 
       <button class="button-style" onclick="checkBoard()">Check Puzzle</button>
 
-      <button class="button-style" onclick="showSolution()">Show Answer</button>
+      <button class="button-style" onclick="showSolution()">
+        Show My Solution
+      </button>
     </div>
 
     <footer>
@@ -877,5 +851,13 @@
         Created by: Edward Lee <a href="https://github.com/leedjr-97">Github</a>
       </p>
     </footer>
+
+    <div id="popup-container">
+      <div id="modal">
+        <div id="modal-content"></div>
+      </div>
+
+      <div id="backdrop" onclick="closeModal()"></div>
+    </div>
   </body>
 </html>

@@ -223,3 +223,7 @@ function setPuzzleBoard(solvedBoard, difficulty) {
 
   return permeableBoard;
 }
+
+function here() {
+  console.log("here");
+}
