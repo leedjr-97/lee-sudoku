@@ -10,7 +10,7 @@
 
     <script src="javascript/SudokuBoard.js"></script>
     <script src="javascript/SudokuUtils.js"></script>
-    <script src="javascript/ComponentFunctions.js"></script>
+    <script src="javascript/ModalFunctions.js"></script>
 
     <script>
       let myBoard = undefined;
@@ -53,6 +53,9 @@
       function closeNewPuzzleModal() {
         closeModal();
         setModalContent("empty");
+      }
+      function generateHint() {
+        myBoard?.getHint();
       }
     </script>
 
@@ -837,7 +840,7 @@
     </div>
 
     <div id="puzzle-options">
-      <button class="button-style">Hint</button>
+      <button class="button-style" onclick="generateHint()">Hint</button>
 
       <button class="button-style" onclick="checkBoard()">Check Puzzle</button>
 

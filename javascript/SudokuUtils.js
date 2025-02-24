@@ -133,10 +133,9 @@ function verifyCoord(board, row, column) {
   }
 
   let numCount = 0;
-  grid.forEach((gridRow, rowIndex) => {
-    gridRow.forEach((gridCol, colIndex) => {
+  grid.forEach((gridRow) => {
+    gridRow.forEach((gridCol) => {
       if (gridCol === value) {
-        //   verified = false;
         numCount++;
       }
     });
@@ -200,11 +199,26 @@ function generatePossiblePositions() {
 
   return cellPositions;
 }
+const veryEasy = 17;
+const easy = 17;
+const medium = 17;
+const hard = 50;
+const veryHard = 17;
 function getDifficulty(difficulty) {
   switch (difficulty) {
-    case "easy":
-      return;
+    case "Very Easy":
+      return veryEasy;
+    case "Easy":
+      return easy;
+    case "Medium":
+      return medium;
+    case "Hard":
+      return hard;
+    case "Very Hard":
+      return veryHard;
   }
+  // Defaults to Medium
+  return medium;
 }
 function setPuzzleBoard(solvedBoard, difficulty) {
   const possiblePositions = generatePossiblePositions();
@@ -214,7 +228,9 @@ function setPuzzleBoard(solvedBoard, difficulty) {
     permeableBoard[index] = row.slice();
   });
 
-  for (let i = 0; i < 17; i++) {
+  const amountToRemove = getDifficulty(difficulty);
+
+  for (let i = 0; i < amountToRemove; i++) {
     const row = possiblePositions[i][0];
     const col = possiblePositions[i][1];
 
@@ -222,8 +238,4 @@ function setPuzzleBoard(solvedBoard, difficulty) {
   }
 
   return permeableBoard;
-}
-
-function here() {
-  console.log("here");
 }
