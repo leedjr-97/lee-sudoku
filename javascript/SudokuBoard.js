@@ -1,9 +1,7 @@
 class SudokuBoard {
   constructor(difficulty) {
     const baseBoard = generateBaseBoard();
-    console.log("baseBoard: ", baseBoard);
     this.solution = solveBoard(baseBoard);
-    console.log("solution: ", this.solution);
     this.startingBoard = setPuzzleBoard(this.solution, difficulty);
     this.board = this.startingBoard.map((row) => row.slice());
   }
@@ -35,8 +33,20 @@ class SudokuBoard {
   }
 
   checkPuzzle() {
-    // Don't compare to the solution, instead check for validity
-    // That way we can check for more than one solution
+    // We don't compare to our solution in case there is more than one
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        if (this.board[i][j] !== -1 && this.startingBoard[i][j] === -1) {
+          if (verifyCoord(this.board, i, j)) {
+            document.getElementById(`${i}-${j}-input`).style.border =
+              "solid 1px green";
+          } else {
+            document.getElementById(`${i}-${j}-input`).style.border =
+              "solid 1px red";
+          }
+        }
+      }
+    }
   }
 
   showSolution() {
@@ -59,8 +69,10 @@ class SudokuBoard {
     if (!isNaN(newNumber)) {
       this.board[row][column] = newNumber;
       document.getElementById(`${row}-${column}-input`).value = value;
+      document.getElementById(`${row}-${column}-input`).style.border = "none";
     } else {
       document.getElementById(`${row}-${column}-input`).value = "";
+      document.getElementById(`${row}-${column}-input`).style.border = "none";
     }
   }
 }

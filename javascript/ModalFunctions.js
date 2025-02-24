@@ -38,7 +38,7 @@ const NewPuzzleContent = `<div>
     <p>If you start a new game, you will lose your progress on the current puzzle.</p>
 
       <p>Choose a difficulty:</p>
-      <select id="difficult-select" onchange="setDifficulty">
+      <select id="difficult-select" onchange="setDifficulty()">
         <option>Very Easy</option>
         <option>Easy</option>
         <option>Medium</option>
