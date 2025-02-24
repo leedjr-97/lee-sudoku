@@ -4,6 +4,9 @@ class SudokuBoard {
     this.solution = solveBoard(baseBoard);
     this.startingBoard = setPuzzleBoard(this.solution, difficulty);
     this.board = this.startingBoard.map((row) => row.slice());
+
+    this.difficulty = difficulty;
+    this.timer = new Timer();
   }
 
   getHint() {

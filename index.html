@@ -11,6 +11,7 @@
     <script src="javascript/SudokuBoard.js"></script>
     <script src="javascript/SudokuUtils.js"></script>
     <script src="javascript/ModalFunctions.js"></script>
+    <script src="javascript/Timer.js"></script>
 
     <script>
       let myBoard = undefined;
@@ -82,6 +83,8 @@
         >
           New Puzzle
         </button>
+
+        <div id="timer"></div>
       </div>
     </header>
 
@@ -89,7 +92,7 @@
       <div id="row-one">
         <div class="block-one">
           <div class="number-row-one">
-            <div id="0-0" class="item-one">
+            <div id="0-0" class="item-one" ondblclick="">
               <input
                 id="0-0-input"
                 class="input-style"

@@ -27,8 +27,10 @@ h1 {
 #header-buttons {
   margin-left: 32px;
   margin-right: 32px;
-}
-#new-puzzle-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #backdrop {
