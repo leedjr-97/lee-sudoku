@@ -8,32 +8,32 @@
     <link rel="stylesheet" type="text/css" href="css/sudoku.css" />
     <link rel="stylesheet" type="text/css" href="css/sudokuGrid.css" />
 
-    <script src="javascript/SudokuBoard.js"></script>
-    <script src="javascript/SudokuUtils.js"></script>
-    <script src="javascript/ModalFunctions.js"></script>
-    <script src="javascript/Timer.js"></script>
-
     <script>
       let myBoard = undefined;
+
+      function setNumberOnBoard(event, i, j) {
+        myBoard.setNumber(i, j, event?.target?.value);
+      }
       function setUpBoard(difficulty) {
+        if (!!myBoard) {
+          myBoard?.resetBoard();
+        }
         const board = new SudokuBoard(difficulty);
 
         for (let i = 0; i < board.startingBoard.length; i++) {
           for (let j = 0; j < board.startingBoard[i].length; j++) {
+            const input = document.getElementById(`${i}-${j}-input`);
             if (board.startingBoard[i][j] === -1) {
-              document.getElementById(`${i}-${j}-input`).value = "";
-              document.getElementById(`${i}-${j}-input`).disabled = false;
-              document.getElementById(`${i}-${j}-input`).style.color = "white";
-              document
-                .getElementById(`${i}-${j}-input`)
-                .addEventListener("input", (event) => {
-                  board.setNumber(i, j, event.target.value);
-                });
+              input.value = "";
+              input.disabled = false;
+              input.style.color = "white";
+              input.addEventListener("input", (event) => {
+                board.setNumber(i, j, event.target.value);
+              });
             } else {
-              document.getElementById(`${i}-${j}-input`).value =
-                board.startingBoard[i][j];
-              document.getElementById(`${i}-${j}-input`).disabled = true;
-              document.getElementById(`${i}-${j}-input`).style.color = "gold";
+              input.value = board.startingBoard[i][j];
+              input.disabled = true;
+              input.style.color = "gold";
             }
           }
         }
@@ -57,9 +57,18 @@
         myBoard?.getHint();
       }
       function checkMyBoard() {
-        myBoard?.checkPuzzle();
+        myBoard?.checkPuzzle(false);
+      }
+      function completePuzzle() {
+        openModal();
+        setModalContent("completePuzzle", myBoard);
       }
     </script>
+
+    <script src="javascript/SudokuBoard.js"></script>
+    <script src="javascript/SudokuUtils.js"></script>
+    <script src="javascript/ModalFunctions.js"></script>
+    <script src="javascript/Timer.js"></script>
 
     <!--	Google Fonts-->
     <!-- <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">

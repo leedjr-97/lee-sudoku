@@ -6,6 +6,7 @@ class SudokuBoard {
     this.board = this.startingBoard.map((row) => row.slice());
 
     this.difficulty = difficulty;
+    this.numberOfEmptySpaces = getDifficulty(difficulty);
     this.timer = new Timer();
   }
 
@@ -35,21 +36,29 @@ class SudokuBoard {
     this.board[randomEmptyCoordinates.i][randomEmptyCoordinates.j] = hint;
   }
 
-  checkPuzzle() {
+  checkPuzzle(checkingForCompletion) {
+    let result = true;
     // We don't compare to our solution in case there is more than one
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
         if (this.board[i][j] !== -1 && this.startingBoard[i][j] === -1) {
           if (verifyCoord(this.board, i, j)) {
-            document.getElementById(`${i}-${j}-input`).style.border =
-              "solid 1px green";
+            if (!checkingForCompletion) {
+              document.getElementById(`${i}-${j}-input`).style.border =
+                "solid 1px green";
+            }
           } else {
-            document.getElementById(`${i}-${j}-input`).style.border =
-              "solid 1px red";
+            if (!checkingForCompletion) {
+              document.getElementById(`${i}-${j}-input`).style.border =
+                "solid 1px red";
+            }
+            result = false;
           }
         }
       }
     }
+
+    return result;
   }
 
   showSolution() {
@@ -70,12 +79,40 @@ class SudokuBoard {
   setNumber(row, column, value) {
     const newNumber = parseInt(value);
     if (!isNaN(newNumber)) {
+      if (this.board[row][column] === -1) {
+        this.numberOfEmptySpaces--;
+      }
       this.board[row][column] = newNumber;
       document.getElementById(`${row}-${column}-input`).value = value;
       document.getElementById(`${row}-${column}-input`).style.border = "none";
+
+      if (this.numberOfEmptySpaces === 0) {
+        console.log("Complete!");
+        this.checkPuzzle(true);
+        this.timer.removeInterval();
+        completePuzzle();
+      }
     } else {
+      this.numberOfEmptySpaces++;
+      this.board[row][column] = -1;
       document.getElementById(`${row}-${column}-input`).value = "";
       document.getElementById(`${row}-${column}-input`).style.border = "none";
     }
+  }
+
+  resetBoard() {
+    this.timer.removeInterval();
+
+    for (let i = 0; i < this.board.length; i++) {
+      for (let j = 0; j < this.board[i].length; j++) {
+        const old_element = document.getElementById(`${i}-${j}-input`);
+        const new_element = old_element.cloneNode(true);
+        old_element.parentNode.replaceChild(new_element, old_element);
+      }
+    }
+  }
+
+  getCompletionTime() {
+    return this.timer.getTime();
   }
 }

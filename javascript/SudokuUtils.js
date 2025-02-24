@@ -200,8 +200,8 @@ function generatePossiblePositions() {
   return cellPositions;
 }
 const veryEasy = 17;
-const easy = 17;
-const medium = 17;
+const easy = 30;
+const medium = 40;
 const hard = 50;
 const veryHard = 17;
 function getDifficulty(difficulty) {

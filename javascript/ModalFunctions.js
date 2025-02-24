@@ -55,11 +55,55 @@ const NewPuzzleContent = `<div>
     </div>
   </div>`;
 
-function setModalContent(type) {
+function getCompletePuzzle(myBoard) {
+  return `<div>
+  <div class="modal-header">
+    <h2>Congratulations!</h2>
+
+    <button class="button-style" onclick="closeNewPuzzleModal()">
+      <span class="close">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <p>You completed the puzzle!</p>
+    <p>Difficulty: ${myBoard?.difficulty}</p>
+    <p>Time: ${myBoard?.timer?.getTime()}</p>
+
+    <h4>Start a new puzzle?</h4>
+    <div style="margin-left: 8px">
+      <p>Choose a difficulty:</p>
+      <select id="difficult-select" onchange="setDifficulty()">
+        <option>Very Easy</option>
+        <option>Easy</option>
+        <option>Medium</option>
+        <option>Hard</option>
+        <option>Very Hard</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="button-style" style="margin-right: 8px" onclick="closeModal()">
+      Go Back
+    </button>
+    <button class="button-style" onclick="startNewPuzzle()">Start</button>
+  </div>
+</div>`;
+}
+
+function setModalContent(type, myBoard) {
   if (type === "empty") {
     document.getElementById("modal-content").innerHTML = "";
   } else if (type === "newPuzzle") {
     document.getElementById("modal-content").innerHTML = NewPuzzleContent;
+    return;
+  } else if (type === "completePuzzle") {
+    console.log(myBoard.timer);
+    console.log(myBoard.timer.getTime());
+    console.log(myBoard.getCompletionTime());
+    document.getElementById("modal-content").innerHTML =
+      getCompletePuzzle(myBoard);
     return;
   }
 }
