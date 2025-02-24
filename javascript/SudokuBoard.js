@@ -48,10 +48,8 @@ class SudokuBoard {
                 "solid 1px green";
             }
           } else {
-            if (!checkingForCompletion) {
-              document.getElementById(`${i}-${j}-input`).style.border =
-                "solid 1px red";
-            }
+            document.getElementById(`${i}-${j}-input`).style.border =
+              "solid 1px red";
             result = false;
           }
         }
@@ -87,10 +85,11 @@ class SudokuBoard {
       document.getElementById(`${row}-${column}-input`).style.border = "none";
 
       if (this.numberOfEmptySpaces === 0) {
-        console.log("Complete!");
-        this.checkPuzzle(true);
-        this.timer.removeInterval();
-        completePuzzle();
+        const isComplete = this.checkPuzzle(true);
+        if (isComplete) {
+          this.timer.removeInterval();
+          completePuzzle();
+        }
       }
     } else {
       this.numberOfEmptySpaces++;

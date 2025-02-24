@@ -99,9 +99,6 @@ function setModalContent(type, myBoard) {
     document.getElementById("modal-content").innerHTML = NewPuzzleContent;
     return;
   } else if (type === "completePuzzle") {
-    console.log(myBoard.timer);
-    console.log(myBoard.timer.getTime());
-    console.log(myBoard.getCompletionTime());
     document.getElementById("modal-content").innerHTML =
       getCompletePuzzle(myBoard);
     return;
