@@ -1,0 +1,50 @@
+#header-buttons {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+#big-container {
+  margin-right: 16px;
+  margin-left: 16px;
+}
+
+.item-one {
+  height: 56px;
+}
+.item-two {
+  height: 56px;
+}
+.item-three {
+  height: 56px;
+}
+.item-four {
+  height: 56px;
+}
+.item-five {
+  height: 56px;
+}
+.item-six {
+  height: 56px;
+}
+.item-seven {
+  height: 56px;
+}
+.item-eight {
+  height: 56px;
+}
+.item-nine {
+  height: 56px;
+}
+
+.input-style {
+  line-height: 32px;
+}
+
+#puzzle-options {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+footer {
+  padding-right: 16px;
+}
