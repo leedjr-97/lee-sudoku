@@ -42,7 +42,11 @@
       }
 
       function showSolution() {
-        myBoard?.showSolution();
+        if (myBoard?.displayMySolution) {
+          myBoard?.hideSolution();
+        } else {
+          myBoard?.showSolution();
+        }
       }
 
       function openNewPuzzleModal() {
@@ -859,7 +863,11 @@
         Check Puzzle
       </button>
 
-      <button class="button-style" onclick="showSolution()">
+      <button
+        id="solution-toggle"
+        class="button-style"
+        onclick="showSolution()"
+      >
         Show My Solution
       </button>
     </div>

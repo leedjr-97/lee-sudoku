@@ -8,6 +8,7 @@ class SudokuBoard {
     this.difficulty = difficulty;
     this.numberOfEmptySpaces = getDifficulty(difficulty);
     this.timer = new Timer();
+    this.displayMySolution = false;
   }
 
   getHint() {
@@ -60,6 +61,8 @@ class SudokuBoard {
   }
 
   showSolution() {
+    this.displayMySolution = true;
+    document.getElementById("solution-toggle").innerText = "Hide My Solution";
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
         document.getElementById(`${i}-${j}-input`).value = this.solution[i][j];
@@ -69,6 +72,24 @@ class SudokuBoard {
           document.getElementById(`${i}-${j}-input`).style.color = "green";
         } else {
           document.getElementById(`${i}-${j}-input`).style.color = "red";
+        }
+      }
+    }
+  }
+
+  hideSolution() {
+    this.displayMySolution = false;
+    document.getElementById("solution-toggle").innerText = "Show My Solution";
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        document.getElementById(`${i}-${j}-input`).value =
+          this.board[i][j] === -1 ? "" : this.board[i][j];
+        if (this.startingBoard[i][j] !== -1) {
+          document.getElementById(`${i}-${j}-input`).style.color = "gold";
+        } else if (this.solution[i][j] === this.board[i][j]) {
+          document.getElementById(`${i}-${j}-input`).style.color = "white";
+        } else {
+          document.getElementById(`${i}-${j}-input`).style.color = "white";
         }
       }
     }

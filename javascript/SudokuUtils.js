@@ -202,8 +202,8 @@ function generatePossiblePositions() {
 const veryEasy = 17;
 const easy = 30;
 const medium = 40;
-const hard = 50;
-const veryHard = 17;
+const hard = 45;
+const veryHard = 55;
 function getDifficulty(difficulty) {
   switch (difficulty) {
     case "Very Easy":

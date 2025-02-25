@@ -16,10 +16,12 @@ class Timer {
         const hourCalc = Math.floor(difference / 1440000);
         const hours =
           Math.floor(difference / 1440000) > 1
-            ? `${hourCalc < 10 ? 0 : ""}:${hourCalc}`
+            ? `${hourCalc < 10 ? 0 : ""}${hourCalc}:`
             : "";
 
-        const minuteCalc = Math.floor(difference / 60000);
+        const minuteCalcCheck = Math.floor(difference / 60000);
+        const minuteCalc =
+          minuteCalcCheck > 60 ? minuteCalcCheck % 60 : minuteCalcCheck;
         const minutes =
           difference / 60000 > 1
             ? `${minuteCalc < 10 ? 0 : ""}${minuteCalc}`
